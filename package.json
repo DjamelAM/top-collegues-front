@@ -7,7 +7,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "ng build --prod --base-href https://NOM_UTILISATEUR.github.io/top-collegues-front/"
+    "build": "ng build --prod --base-href https://DjamelAM.github.io/top-collegues-front/"
   },
   "private": true,
   "dependencies": {
@@ -20,8 +20,13 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "angular-bootstrap-md": "^6.2.3",
+    "chart.js": "^2.5.0",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.2.0",
+    "rxjs-compat": "^6.3.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
