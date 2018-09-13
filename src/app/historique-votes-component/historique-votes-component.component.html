@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8" *ngFor="let vote of votes">
+      <!-- création d'une card -->
+      <div class="card" style="width: 30rem;">
+        <!-- nom de la card en titre -->
+        <div class="card-header">Historique</div>
+        <div class="row">
+          <div class="col-2">
+            <img class="card-img-top" src="{{vote.collegue.photo}}" alt="Card image cap">
+          </div>
+          <div class="col-4">
+            <p class="card-text">{{vote.collegue.pseudo}}</p>
+            <p class="card-text">{{vote.collegue.pseudo}} est détesté, elle a désormais un score de {{vote.collegue.points}} </p>
+            <button type="button" (click)="supprimer()" class="btn btn-primary">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
