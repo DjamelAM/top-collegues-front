@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Vote, Avis, Collegue } from '../models';
 
 @Component({
@@ -8,6 +8,8 @@ import { Vote, Avis, Collegue } from '../models';
 })
 export class HistoriqueVotesComponentComponent implements OnInit {
   votes: Array<Vote>;
+  vote1: Vote
+  newVote: Array<Vote>
   vote: Vote;
   constructor() {
     this.votes = [new Vote(Avis.AIMER, new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
@@ -15,18 +17,13 @@ export class HistoriqueVotesComponentComponent implements OnInit {
     new Vote(Avis.DETESTER, new Collegue("Rémi", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
     new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"))
     ]
-
+    this.vote1 = new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"));
   }
 
   ngOnInit() {
   }
 
-  supprimer() {
-    // ne fonctionne pas
-    if (this.votes.includes(this.vote)) {
-      let newVotes = this.votes.filter(vote => vote === this.vote);
-      this.votes = newVotes;
-      console.log(this.vote + "oui")
-    }
+  supprimer(voteASupprimer) {
+    this.votes = this.votes.filter(vote => vote !== voteASupprimer)
   }
 }

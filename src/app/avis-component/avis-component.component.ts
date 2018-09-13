@@ -10,13 +10,14 @@ export class AvisComponentComponent implements OnInit {
 
   constructor() { }
   @Input() resultat: string;
-  @Output() avis: Avis;
+  avis: Avis;
   ngOnInit() {
   }
   aimerClic() {
-    this.resultat = "Vous avez cliquez sur " + "aimer";
+    this.resultat = "Vous avez cliquez sur " + Avis.AIMER;
+
   }
   detesterClic() {
-    this.resultat = "Vous avez cliquez sur " + "détester";
+    this.resultat = "Vous avez cliquez sur " + Avis.DETESTER;
   }
 }
