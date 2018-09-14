@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { Avis } from '../models';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Avis, Collegue, Vote } from '../models';
 
 @Component({
   selector: 'app-avis-component',
@@ -9,15 +9,13 @@ import { Avis } from '../models';
 export class AvisComponentComponent implements OnInit {
 
   constructor() { }
-  @Input() resultat: string;
-  avis: Avis;
+  @Output() avis: EventEmitter<Avis> = new EventEmitter<Avis>();
   ngOnInit() {
   }
   aimerClic() {
-    this.resultat = "Vous avez cliquez sur " + Avis.AIMER;
-
+    this.avis.emit(Avis.AIMER);
   }
   detesterClic() {
-    this.resultat = "Vous avez cliquez sur " + Avis.DETESTER;
+    this.avis.emit(Avis.DETESTER);
   }
 }

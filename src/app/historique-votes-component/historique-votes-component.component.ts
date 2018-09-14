@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, NgModule } from '@angular/core';
 import { Vote, Avis, Collegue } from '../models';
 
 @Component({
@@ -7,17 +7,17 @@ import { Vote, Avis, Collegue } from '../models';
   styleUrls: ['./historique-votes-component.component.scss']
 })
 export class HistoriqueVotesComponentComponent implements OnInit {
-  votes: Array<Vote>;
-  vote1: Vote
-  newVote: Array<Vote>
-  vote: Vote;
+  votes: Array<Vote> = [];
+  nbrVotes: number;
   constructor() {
-    this.votes = [new Vote(Avis.AIMER, new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
+
+
+    this.votes = this.votes.concat([new Vote(Avis.AIMER, new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
     new Vote(Avis.AIMER, new Collegue("Marcel", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
     new Vote(Avis.DETESTER, new Collegue("Rémi", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
     new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"))
-    ]
-    this.vote1 = new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"));
+    ]);
+    this.nbrVotes = this.votes.length;
   }
 
   ngOnInit() {

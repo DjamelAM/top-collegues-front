@@ -14,7 +14,7 @@ export class ListeColleguesComponentComponent implements OnInit {
     new Collegue("Marcel", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
     new Collegue("Suzanne", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
     new Collegue("Suzanne", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-    new Collegue("Frank", 95, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")
+    new Collegue("Frank", -1000, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")
     ]
 
   }
