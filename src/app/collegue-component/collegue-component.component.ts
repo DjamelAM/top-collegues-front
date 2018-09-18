@@ -18,11 +18,11 @@ export class CollegueComponentComponent implements OnInit {
 
   traiter(avis: Avis) {
     this._collegueSrv.donnerUnAvis(this.collegue, avis).then(tabCol => {
-      if (avis === Avis.AIMER && !(tabCol.points >= 1000)) {
+      if (avis === Avis.AIMER) {
         this.collegue.points = tabCol.points;
       }
 
-      if (avis === Avis.DETESTER && !(tabCol.points <= -1000)) {
+      if (avis === Avis.DETESTER) {
         this.collegue.points = tabCol.points;
       }
       this.resultat = "Vous avez cliquez sur " + avis;
