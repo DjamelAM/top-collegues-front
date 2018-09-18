@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue, Avis } from '../models';
+import { CollegueService } from '../services/collegue.service';
 
 @Component({
   selector: 'app-collegue-component',
@@ -9,20 +10,22 @@ import { Collegue, Avis } from '../models';
 export class CollegueComponentComponent implements OnInit {
   @Input() collegue: Collegue;
   resultat: string;
-  constructor() {
+  avisFinal: Avis;
+  constructor(private _collegueSrv: CollegueService) {
   }
   ngOnInit() {
   }
 
   traiter(avis: Avis) {
-    if (avis === Avis.AIMER && !(this.collegue.points >= 1000)) {
-      this.collegue.points += 1;
-    }
+    this._collegueSrv.donnerUnAvis(this.collegue, avis).then(tabCol => {
+      if (avis === Avis.AIMER && !(tabCol.points >= 1000)) {
+        this.collegue.points = tabCol.points;
+      }
 
-    if (avis === Avis.DETESTER && !(this.collegue.points <= -1000)) {
-      this.collegue.points -= 1;
-    }
-    this.resultat = "Vous avez cliquez sur " + avis;
-
+      if (avis === Avis.DETESTER && !(tabCol.points <= -1000)) {
+        this.collegue.points = tabCol.points;
+      }
+      this.resultat = "Vous avez cliquez sur " + avis;
+    });
   }
 }

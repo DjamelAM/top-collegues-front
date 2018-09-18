@@ -8,6 +8,19 @@ import { AvisComponentComponent } from './avis-component/avis-component.componen
 import { CollegueComponentComponent } from './collegue-component/collegue-component.component';
 import { ListeColleguesComponentComponent } from './liste-collegues-component/liste-collegues-component.component';
 import { HistoriqueVotesComponentComponent } from './historique-votes-component/historique-votes-component.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MenuComponentComponent } from './menu-component/menu-component.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AccueilComponentComponent } from './accueil-component/accueil-component.component';
+import { CarouselComponent } from './carousel/carousel.component';
+
+const appRoutes: Routes = [
+
+  { path: 'accueil', component: AccueilComponentComponent }, // /page1 affiche le composant A
+
+  { path: 'demo', component: CarouselComponent } // /page2 affiche le composant B
+
+];
 
 @NgModule({
   declarations: [
@@ -17,11 +30,16 @@ import { HistoriqueVotesComponentComponent } from './historique-votes-component/
     AvisComponentComponent,
     CollegueComponentComponent,
     ListeColleguesComponentComponent,
-    HistoriqueVotesComponentComponent
+    HistoriqueVotesComponentComponent,
+    MenuComponentComponent,
+    AccueilComponentComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

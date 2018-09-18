@@ -1,14 +1,20 @@
-<app-bandeau-component></app-bandeau-component>
-<div class="container-fluid">
-    <div class="row">
+<header>
+    <app-bandeau-component>
+    </app-bandeau-component>
+</header>
+<nav>
+    <!-- Navigation via un menu -->
+    <app-menu-component></app-menu-component>
+</nav>
+<div id="content">
+    <!-- le composant défini dans la route courante va être inséré à cet endroit -->
 
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <app-liste-collegues-component>
-            </app-liste-collegues-component>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-
-            <app-historique-votes-component></app-historique-votes-component>
-        </div>
-    </div>
+    <!-- au regard de la configuration précédente, 
+           /page1 va insérer le composant AComponent à cet emplacement
+           /page2 a insérer le composant BComponent à cet emplacement
+       -->
+    <router-outlet></router-outlet>
 </div>
+<footer>
+    <!-- Pied de page -->
+</footer>
