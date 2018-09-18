@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://amraoui-top-collegue.herokuapp.com/'
+  backendUrl: 'https://amraoui-top-collegue.herokuapp.com/collegues'
 };
