@@ -3,7 +3,10 @@ node_js:
   - "9"
 before_script:
   - npm install
-script: npm run build
+script:
+  - npm run build
+  #on ajoute cette ligne pour dupliquer le fichier index dans un fichier 404 pour régler le problème lié au F5.
+  - cp  dist/top-collegues-front/index.html  dist/top-collegues-front/404.html
 deploy:
   local-dir: dist/top-collegues-front
   provider: pages
