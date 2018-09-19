@@ -2,12 +2,18 @@
   <div class="card">
     <img class="card-img-top" src="{{collegue.photo}}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{collegue.pseudo}}</h5>
+      <h5 class="card-title">
+        <a [routerLink]="['/collegues',collegue.pseudo]">{{collegue.pseudo}}</a>
+      </h5>
+
       <p class="card-text">Nombre de points : {{collegue.points}}</p>
     </div>
     <div class="card-footer">
       <app-avis-component (avis)="traiter($event)"></app-avis-component>
       {{resultat}}
+    </div>
+    <div class="card-footer" *ngIf="errMsg">
+      {{errMsg}}
     </div>
   </div>
 </div>

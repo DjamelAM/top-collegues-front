@@ -13,12 +13,15 @@ import { MenuComponentComponent } from './menu-component/menu-component.componen
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponentComponent } from './accueil-component/accueil-component.component';
 import { CarouselComponent } from './carousel/carousel.component';
-
+import { AfficheCollegueComponent } from './affiche-collegue/affiche-collegue.component';
+import { FormsModule } from '@angular/forms';
+import { AjouterCollegueComponent } from './ajouter-collegue/ajouter-collegue.component';
 const appRoutes: Routes = [
 
   { path: 'accueil', component: AccueilComponentComponent }, // /page1 affiche le composant A
 
-  { path: 'demo', component: CarouselComponent } // /page2 affiche le composant B
+  { path: 'demo', component: CarouselComponent }, // /page2 affiche le composant B
+  { path: 'collegues/:pseudo', component: AfficheCollegueComponent }
 
 ];
 
@@ -33,13 +36,16 @@ const appRoutes: Routes = [
     HistoriqueVotesComponentComponent,
     MenuComponentComponent,
     AccueilComponentComponent,
-    CarouselComponent
+    CarouselComponent,
+    AfficheCollegueComponent,
+    AjouterCollegueComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

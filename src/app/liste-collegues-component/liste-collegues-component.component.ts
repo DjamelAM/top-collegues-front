@@ -10,6 +10,7 @@ import { CollegueService } from '../services/collegue.service';
 })
 export class ListeColleguesComponentComponent implements OnInit {
   collegues: Array<Collegue>;
+  err: string;
   constructor(private _collegueSrv: CollegueService) { }
 
   /* this.collegues = [new Collegue("Francis", 9000, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
@@ -23,7 +24,12 @@ export class ListeColleguesComponentComponent implements OnInit {
 
 
   ngOnInit() {
-    this._collegueSrv.listerCollegues().then(tabCol => (this.collegues = tabCol))
+    this._collegueSrv.listerCollegues().then(tabCol => (this.collegues = tabCol)).catch(errServeur => {
+      if (errServeur.code && errServeur.message) {
+        this.err = errServeur.message;
+      } else {
+        this.err = 'Erreur technique côté serveur';
+      }
+    });
   }
-
 }

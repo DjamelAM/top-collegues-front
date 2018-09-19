@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue, Avis } from '../models';
 import { CollegueService } from '../services/collegue.service';
-
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-collegue-component',
   templateUrl: './collegue-component.component.html',
@@ -10,9 +10,8 @@ import { CollegueService } from '../services/collegue.service';
 export class CollegueComponentComponent implements OnInit {
   @Input() collegue: Collegue;
   resultat: string;
-  avisFinal: Avis;
-  constructor(private _collegueSrv: CollegueService) {
-  }
+  errMsg: string;
+  constructor(private _collegueSrv: CollegueService) { }
   ngOnInit() {
   }
 
@@ -26,6 +25,12 @@ export class CollegueComponentComponent implements OnInit {
         this.collegue.points = tabCol.points;
       }
       this.resultat = "Vous avez cliquez sur " + avis;
+    }).catch((errServeur: HttpErrorResponse) => {
+      if (errServeur.error.message) {
+        this.errMsg = errServeur.error.message;
+      } else {
+        this.errMsg = 'Erreur technique côté serveur';
+      }
     });
   }
 }

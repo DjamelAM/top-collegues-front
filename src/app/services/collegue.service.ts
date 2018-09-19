@@ -13,8 +13,6 @@ const URL_BACKEND = environment.backendUrl;
 export class CollegueService {
   avisFinal;
   constructor(private _http: HttpClient) {
-
-
   }
 
   listerCollegues(): Promise<Collegue[]> {
@@ -40,6 +38,11 @@ export class CollegueService {
     }
 
     return this.avisFinal;
+  }
+
+  findByName(pseudo: String) {
+    return this._http.get(URL_BACKEND + `/${pseudo}`).toPromise().then((col: any) => new Collegue(col.name, col.points, col.url));
+
   }
 
 }
