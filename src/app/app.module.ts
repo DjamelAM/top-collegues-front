@@ -21,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'accueil', component: AccueilComponentComponent }, // /page1 affiche le composant A
 
   { path: 'demo', component: CarouselComponent }, // /page2 affiche le composant B
-  { path: 'collegues/:pseudo', component: AfficheCollegueComponent }
+  { path: 'collegues/:pseudo', component: AfficheCollegueComponent },
+  { path: 'new', component: AjouterCollegueComponent }, // /page2 affiche le composant B
 
 ];
 

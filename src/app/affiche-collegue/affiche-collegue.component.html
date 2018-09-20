@@ -1,8 +1,29 @@
 <div class="d-flex justify-content-center">
   <div class="w-50">
-    <mdb-carousel [isControls]="true" [animation]="'slide'">
-      <app-collegue-component [collegue]="collegue">
-      </app-collegue-component>
-    </mdb-carousel>
+    <div class="mt-4">
+      <div class="card">
+        <img class="card-img-top" [src]="collegue.photo" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a routerLink="/collegues/{{collegue.pseudo}}">{{collegue.pseudo}}</a>
+          </h5>
+
+          <p class="card-text">Nombre de points : {{collegue.points}}</p>
+          <p class="card-text">Nom : {{collegue.nom}}</p>
+          <p class="card-text">Prenom : {{collegue.prenom}}</p>
+          <p class="card-text">Email : {{collegue.email}}</p>
+          <p class="card-text">Adresse : {{collegue.adresse}}</p>
+
+        </div>
+        <div class="card-footer">
+          <app-avis-component (avis)="traiter($event)"></app-avis-component>
+          {{resultat}}
+        </div>
+        <div class="card-footer" *ngIf="errMsg">
+          {{errMsg}}
+        </div>
+      </div>
+    </div>
+    <div></div>
   </div>
 </div>

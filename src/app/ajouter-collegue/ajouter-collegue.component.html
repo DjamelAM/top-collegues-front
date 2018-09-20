@@ -1,3 +1,34 @@
-<p>
-  ajouter-collegue works!
-</p>
+<div class="d-flex justify-content-center">
+  <div class="w-50">
+    <!-- Default form login -->
+    <form name="myForm" class="text-center border border-light p-5" (ngSubmit)="submit()" #form="ngForm">
+
+      <p class="h4 mb-4">Ajouter un collegue</p>
+
+      <!-- Matricule -->
+      <div class="md-form">
+        <input type="text" id="matriculeform" class="form-control mb-4" [(ngModel)]="formulaire.matricule" name="matricule" required
+          mdbInputDirective>
+        <label for="matriculeform">Matricule</label>
+      </div>
+
+      <!-- Pseudo -->
+      <div class="md-form">
+        <input type="text" id="pseudoform" class="form-control mb-4" [(ngModel)]="formulaire.pseudo" name="pseudo" required mdbInputDirective
+          minlength=2>
+        <label for="pseudoform">Pseudo</label>
+      </div>
+      <!-- Pseudo -->
+      <div class="md-form">
+        <input type="text" id="photoform" class="form-control mb-4" [(ngModel)]="formulaire.photo" name="photo" mdbInputDirective>
+        <label for="photoform">Photo</label>
+      </div>
+      <!-- Sign in button -->
+      <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!form.valid">Ajouter</button>
+    </form>
+    <div class="card-footer" *ngIf="errMsg">
+      {{errMsg}}
+    </div>
+  </div>
+</div>
+<!-- Default form login -->

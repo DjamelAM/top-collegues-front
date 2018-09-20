@@ -7,11 +7,19 @@ export class Collegue {
     photo: string;
     pseudo: string;
     points: number;
+    nom: string;
+    adresse: string;
+    email: string;
+    prenom: string;
 
-    constructor(pseudo, points, photo) {
+    constructor(nom, points, photo, pseudo, adresse, email, prenom) {
         this.pseudo = pseudo;
         this.points = points;
         this.photo = photo;
+        this.email = email;
+        this.adresse = adresse;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     majPoint(avis, collegue) {
@@ -33,4 +41,15 @@ export class Vote {
         this.collegue = collegue;
     }
 
+}
+
+export class Formulaire {
+    matricule: string;
+    pseudo: string;
+    photo: string;
+    constructor(matricule, pseudo, photo) {
+        this.matricule = matricule;
+        this.pseudo = pseudo;
+        this.photo = photo;
+    }
 }

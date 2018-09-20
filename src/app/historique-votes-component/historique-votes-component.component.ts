@@ -12,10 +12,10 @@ export class HistoriqueVotesComponentComponent implements OnInit {
   constructor() {
 
 
-    this.votes = this.votes.concat([new Vote(Avis.AIMER, new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
-    new Vote(Avis.AIMER, new Collegue("Marcel", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
-    new Vote(Avis.DETESTER, new Collegue("Rémi", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")),
-    new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"))
+    this.votes = this.votes.concat([new Vote(Avis.AIMER, new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png", "JEANNNNNNNEE", "", "SurtoutpasJeanne", "")),
+    new Vote(Avis.AIMER, new Collegue("Marcel", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png", "Marcel0", "", "", "")),
+    new Vote(Avis.DETESTER, new Collegue("Rémi", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png", "Rémi", "", "", "")),
+    new Vote(Avis.DETESTER, new Collegue("Mathilde", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png", "Mattt", "", "", ""))
     ]);
     this.nbrVotes = this.votes.length;
   }

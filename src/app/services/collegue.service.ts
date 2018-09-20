@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Collegue, Avis } from '../models';
+import { Collegue, Avis, Formulaire } from '../models';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -17,7 +17,7 @@ export class CollegueService {
 
   listerCollegues(): Promise<Collegue[]> {
     // récupérer la liste des collègues côté serveur
-    return this._http.get(URL_BACKEND).toPromise().then((data: any[]) => data.map(col => new Collegue(col.name, col.points, col.url)));
+    return this._http.get(URL_BACKEND).toPromise().then((data: any[]) => data.map(col => new Collegue(col.name, col.points, col.url, col.pseudo, col.adresse, col.email, col.prenom)));
   }
 
   donnerUnAvis(unCollegue: Collegue, avis: Avis): Promise<Collegue> {
@@ -41,7 +41,12 @@ export class CollegueService {
   }
 
   findByName(pseudo: String) {
-    return this._http.get(URL_BACKEND + `/${pseudo}`).toPromise().then((col: any) => new Collegue(col.name, col.points, col.url));
+    return this._http.get(URL_BACKEND + `/${pseudo}`).toPromise().then((col: any) => new Collegue(col.name, col.points, col.url, col.pseudo, col.adresse, col.email, col.prenom));
+
+  }
+
+  envoiFormulaire(formulaire: Formulaire) {
+    return this._http.post(URL_BACKEND + `/new`, formulaire).toPromise();
 
   }
 
