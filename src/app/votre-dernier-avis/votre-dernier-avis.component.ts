@@ -9,7 +9,6 @@ import { Vote, Avis } from '../models';
 })
 export class VotreDernierAvisComponent implements OnInit {
   resultat: string;
-  resultats: Array<string>[];
   constructor(private _collegueSrv: CollegueService) { }
 
   ngOnInit() {
@@ -23,7 +22,7 @@ export class VotreDernierAvisComponent implements OnInit {
         this.resultat = "Je n'ai pas aimé"
       }
 
-      this.resultat += (" " + vote.collegue.pseudo)
+      this.resultat += (" " + vote.collegue.pseudo + " à " + vote.date)
     }
     )
 

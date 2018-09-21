@@ -35,10 +35,13 @@ export class Collegue {
 export class Vote {
     avis: Avis;
     collegue: Collegue;
-
-    constructor(avis, collegue) {
+    date: Date;
+    score: Number;
+    constructor(avis, collegue, date, score) {
         this.avis = avis;
         this.collegue = collegue;
+        this.date = date;
+        this.score = score;
     }
 
 }

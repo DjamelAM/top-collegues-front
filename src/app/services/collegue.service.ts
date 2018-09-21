@@ -51,7 +51,7 @@ export class CollegueService {
       tap(
         col => {
           this._bus.next(
-            new Vote(avis, col)
+            new Vote(avis, col, "", col.points)
           )
         }
       ));

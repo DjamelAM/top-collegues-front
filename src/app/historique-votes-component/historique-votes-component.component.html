@@ -1,6 +1,8 @@
 <h3>Historique
   <span class="badge red">{{votes.length}} </span>
 </h3>
+<button mdbBtn type="button" color="deep-purple" (click)="toutSupprimer()" size="sm" class="waves-light" mdbWavesEffect>Tout supprimer</button>
+
 <!-- création d'une card -->
 <div class="card" *ngFor="let vote of votes">
   <!-- nom de la card en titre -->
@@ -9,7 +11,7 @@
       <img class="card-img-top" src="{{vote.collegue.photo}}" alt="Card image cap">
     </div>
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-6">
-      <p class="card-text">{{vote.collegue.pseudo}} est détesté, elle a désormais un score de {{vote.collegue.points}} </p>
+      <p class="card-text">{{vote.collegue.pseudo}} {{etat}}, il/elle a désormais un score de {{vote.collegue.points}} </p>
       <button type="button" (click)="supprimer(vote)" class="btn btn-primary">Supprimer</button>
     </div>
   </div>
