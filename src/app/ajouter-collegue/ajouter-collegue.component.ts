@@ -17,15 +17,14 @@ export class AjouterCollegueComponent implements OnInit {
 
   submit() {
 
-    this._collegueSrv.envoiFormulaire(this.formulaire).then(() => this.formulaire = new Formulaire("", "", "")).catch((errServeur: HttpErrorResponse) => {
+    this._collegueSrv.envoiFormulaire(this.formulaire).subscribe(() => this.formulaire = new Formulaire("", "", ""), ((errServeur: HttpErrorResponse) => {
 
       if (errServeur.error.message) {
         this.errMsg = errServeur.error.message;
-        console.log(this.errMsg)
       } else {
         this.errMsg = errServeur.error.text;
       }
-    });
+    }));
 
   }
   formulaire = new Formulaire("", "", "");

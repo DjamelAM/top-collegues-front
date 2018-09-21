@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Collegue } from '../models';
 import { Services } from '@angular/core/src/view';
 import { CollegueService } from '../services/collegue.service';
-
+import { FilterPipe } from '../pipes/filter.pipe';
 @Component({
   selector: 'app-liste-collegues-component',
   templateUrl: './liste-collegues-component.component.html',
@@ -13,23 +13,17 @@ export class ListeColleguesComponentComponent implements OnInit {
   err: string;
   constructor(private _collegueSrv: CollegueService) { }
 
-  /* this.collegues = [new Collegue("Francis", 9000, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-  new Collegue("Jeanne", 500, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-  new Collegue("Marcel", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-  new Collegue("Suzanne", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-  new Collegue("Suzanne", 600, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png"),
-  new Collegue("Frank", -1000, "https://cdn.freebiesupply.com/logos/large/2x/travis-ci-monochrome-logo-png-transparent.png")
-  ] */
-
-
 
   ngOnInit() {
-    this._collegueSrv.listerCollegues().then(tabCol => (this.collegues = tabCol)).catch(errServeur => {
-      if (errServeur.code && errServeur.message) {
-        this.err = errServeur.message;
-      } else {
-        this.err = 'Erreur technique côté serveur';
-      }
-    });
+    this._collegueSrv.listerCollegues().subscribe(
+
+      tabCol => (this.collegues = tabCol),
+      errServeur => {
+        if (errServeur.code && errServeur.message) {
+          this.err = errServeur.message;
+        } else {
+          this.err = 'Erreur technique côté serveur';
+        }
+      });
   }
 }

@@ -1,9 +1,12 @@
 <button type="button" class="btn btn-info">Rafraichir la liste</button>
+<input [(ngModel)]="searchText" placeholder="Pseudo recherché">
 <div *ngIf="err">
   <label class="red-text">Problème d'accès au backend : {{err}}</label>
 </div>
+
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let collegue of collegues">
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" *ngFor="let collegue of collegues | filter : searchText">
     <app-collegue-component [collegue]="collegue">
     </app-collegue-component>
   </div>
+</div>

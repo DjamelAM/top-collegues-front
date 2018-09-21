@@ -21,17 +21,19 @@ export class AfficheCollegueComponent implements OnInit {
 
   ngOnInit() {
     this.collegue = new Collegue("", "", "", "", "", "", "")
-    this._collegueSrv.findByName(this.pseudo).then(col => this.collegue = col).catch((errServeur: HttpErrorResponse) => {
-      if (errServeur.error.message) {
-        this.errMsg = errServeur.error.message;
-      } else {
-        this.errMsg = 'Erreur technique côté serveur';
-      }
-    });
+    this._collegueSrv.findByName(this.pseudo).subscribe(
+      col => this.collegue = col,
+      ((errServeur: HttpErrorResponse) => {
+        if (errServeur.error.message) {
+          this.errMsg = errServeur.error.message;
+        } else {
+          this.errMsg = 'Erreur technique côté serveur';
+        }
+      }));
   }
 
   traiter(avis: Avis) {
-    this._collegueSrv.donnerUnAvis(this.collegue, avis).then(tabCol => {
+    this._collegueSrv.donnerUnAvis(this.collegue, avis).subscribe(tabCol => {
       if (avis === Avis.AIMER) {
         this.collegue.points = tabCol.points;
       }
@@ -40,7 +42,7 @@ export class AfficheCollegueComponent implements OnInit {
         this.collegue.points = tabCol.points;
       }
       this.resultat = "Vous avez cliquez sur " + avis;
-    }).catch((errServeur: HttpErrorResponse) => {
+    }, (errServeur: HttpErrorResponse) => {
       if (errServeur.error.message) {
         this.errMsg = errServeur.error.message;
       } else {

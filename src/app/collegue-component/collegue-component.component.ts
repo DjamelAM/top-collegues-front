@@ -16,21 +16,24 @@ export class CollegueComponentComponent implements OnInit {
   }
 
   traiter(avis: Avis) {
-    this._collegueSrv.donnerUnAvis(this.collegue, avis).then(tabCol => {
-      if (avis === Avis.AIMER) {
-        this.collegue.points = tabCol.points;
-      }
+    this._collegueSrv.donnerUnAvis(this.collegue, avis).subscribe(
+      tabCol => {
+        if (avis === Avis.AIMER) {
+          this.collegue.points = tabCol.points;
+        }
 
-      if (avis === Avis.DETESTER) {
-        this.collegue.points = tabCol.points;
-      }
-      this.resultat = "Vous avez cliquez sur " + avis;
-    }).catch((errServeur: HttpErrorResponse) => {
-      if (errServeur.error.message) {
-        this.errMsg = errServeur.error.message;
-      } else {
-        this.errMsg = 'Erreur technique côté serveur';
-      }
-    });
+        if (avis === Avis.DETESTER) {
+          this.collegue.points = tabCol.points;
+        }
+        this.resultat = "Vous avez cliquez sur " + avis;
+      },
+
+      (errServeur: HttpErrorResponse) => {
+        if (errServeur.error) {
+          this.errMsg = errServeur.error.text;
+        } else {
+          this.errMsg = 'Erreur technique côté serveur';
+        }
+      });
   }
 }

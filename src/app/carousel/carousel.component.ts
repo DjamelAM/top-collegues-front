@@ -13,7 +13,7 @@ export class CarouselComponent implements OnInit {
   constructor(private _collegueSrv: CollegueService) { }
 
   ngOnInit() {
-    this._collegueSrv.listerCollegues().then(tabCol => (this.collegues = tabCol))
+    this._collegueSrv.listerCollegues().subscribe(tabCol => (this.collegues = tabCol))
   }
 
 }

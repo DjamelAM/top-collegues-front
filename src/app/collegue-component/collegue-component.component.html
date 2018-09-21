@@ -6,7 +6,7 @@
         <a routerLink="/collegues/{{collegue.pseudo}}">{{collegue.pseudo| uppercase}}</a>
       </h5>
 
-      <p class="card-text">Nombre de points : {{collegue.points}}</p>
+      <p class="card-text" [innerHTML]="collegue.points | score"> </p>
     </div>
     <div class="card-footer">
       <app-avis-component (avis)="traiter($event)"></app-avis-component>
