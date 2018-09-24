@@ -11,6 +11,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
 export class ListeColleguesComponentComponent implements OnInit {
   collegues: Array<Collegue>;
   err: string;
+  searchText:string;
   constructor(private _collegueSrv: CollegueService) { }
 
 
